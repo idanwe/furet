@@ -8,6 +8,7 @@ angular.module('FIFA14App')
 
     var allTeams = [
       'Real Madrid',
+      'Atletico Madrid',
       'FC Barcelona',
 
       'Arsenal',
@@ -18,8 +19,11 @@ angular.module('FIFA14App')
       'A.C. Milan',
       'Juventus',
       'Inter',
+      'A.S. Rome',
+      'S.S.C. Napoli',
 
       'FC Bayern Munich',
+      'Bayer Leverkusen',
       'Borussia Dortmund',
 
       'PSG'
