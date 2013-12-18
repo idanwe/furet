@@ -15,6 +15,7 @@ angular.module('FIFA14App')
       'Chelsea',
       'Manchester United',
       'Manchester City',
+      'Liverpool',
 
       'A.C. Milan',
       'Juventus',
