@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: MainCtrl', function() {
 
   // load the controller's module
   beforeEach(module('FIFA14App'));
@@ -16,7 +16,24 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach a list of teams to the scope', function() {
+    expect(scope.teams.length).toBe(15);
   });
+
+  describe('#pickTeams', function() {
+    beforeEach(function(){
+      scope.pickTeams();
+    })
+
+    it('should attach two teams from the list to the scope', function() {
+      expect(scope.teams).toContain(scope.team1);
+      expect(scope.teams).toContain(scope.team2);
+    }
+
+    it('should attach two diffrent teams to the scope', function() {
+      expect(scope.team1).toBeDefined();
+      expect(scope.team2).toBeDefined();
+      expect(scope.team1).not.toEqual(scope.team2)
+    })
+  })
 });
