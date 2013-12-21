@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('FIFA14App')
-  .controller('MainCtrl', function ($scope) {
-    $scope.gameStarted = false;
+  .controller('MainCtrl', function ($scope, $timeout) {
+    $scope.gamePicked = false;
     $scope.team1 = '';
     $scope.team2 = '';
 
-    var allTeams = [
+    $scope.teams = [
       'Real Madrid',
       'Atletico Madrid',
       'FC Barcelona',
@@ -35,12 +35,14 @@ angular.module('FIFA14App')
     };
 
     $scope.pickTeams = function() {
-      var teams = angular.copy(allTeams),
+      var teams = angular.copy($scope.teams),
           team1 = random(teams.length),
           team2 = random(teams.length - 1);
 
-      $scope.team1 = teams.splice(team1, 1)[0];
-      $scope.team2 = teams.splice(team2, 1)[0];
-      $scope.gameStarted = true;
+      $timeout(function() {
+        $scope.team1 = teams.splice(team1, 1)[0];
+        $scope.team2 = teams.splice(team2, 1)[0];
+        $scope.gamePicked = true;
+      }, 1000);
     };
   });

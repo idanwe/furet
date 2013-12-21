@@ -19,18 +19,23 @@ body {
   padding-bottom: 19px;
 }
 
+.pick-teams {
+  letter-spacing: 1px;
+  text-transform: capitalize;
+}
+
 .result {
   position: relative;
   text-align: center;
 }
 
-.result .team1  {
+.result .right  {
   position: absolute;
   top: 0;
   right: 30px;
 }
 
-.result .team2  {
+.result .left  {
   position: absolute;
   top: 0;
   left: 30px;
@@ -40,13 +45,22 @@ body {
   font-size: 16px;
 }
 
-.player {
+.player-name {
   line-height: 20px;
 
   font-size: 18px;
+  font-weight: 400;
   color: #7C7C7C;
 }
 
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
 .team {
-  font-weight: bold;
+  font-weight: 600;
 }

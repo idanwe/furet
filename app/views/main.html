@@ -2,15 +2,17 @@
   <h3 class="text-muted">FIFA 14</h3>
 </div>
 <div class="jumbotron center-block">
-  <button class="btn btn-success btn-lg btn-block" ng-show="!gameStarted" ng-click="pickTeams()">Begin the battle</button>
-  <div class="result center-block" ng-show="gameStarted">
-    <div class="team1">
-      <div class="player">Spyer:</div>
-      <div class="team">{{team1}}</div>
+
+  <button class="pick-teams btn btn-success btn-lg btn-block" ng-show="!gamePicked" ng-click="pickTeams()">Begin the battle</button>
+
+  <div class="result center-block" ng-show="gamePicked">
+    <div class="left">
+      <div class="player-name red">Red Player:</div>
+      <span class="team">{{team1}}</span>
      </div>
     <span class="vs">vs</span>
-    <div class="team2">
-      <div class="player">Idan:</div>
+    <div class="right">
+      <div class="player-name blue">Blue Player:</div>
       <div class="team">{{team2}}</div>
     </div>
   </div>
