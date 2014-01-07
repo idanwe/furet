@@ -3,7 +3,7 @@
 describe('Controller: MainCtrl', function() {
 
   // load the controller's module
-  beforeEach(module('FIFA14App'));
+  beforeEach(module('furetApp'));
 
   var MainCtrl,
     scope;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('FIFA14App')
+angular.module('furetApp')
   .controller('MainCtrl', function ($scope, $timeout) {
     $scope.gamePicked = false;
     $scope.team1 = '';

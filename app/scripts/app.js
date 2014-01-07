@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('FIFA14App', [])
+angular.module('furetApp', [])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
