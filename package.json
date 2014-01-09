@@ -4,7 +4,7 @@
   "dependencies": {
     "hapi": "1.14.x",
     "coffee-script": "1.6.x",
-    "bower": "0.6.x"
+    "bower": "1.2.x"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
