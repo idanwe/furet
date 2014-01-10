@@ -1,6 +1,10 @@
 {
   "name": "furet",
   "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idanw/furet.git"
+  },
   "dependencies": {
     "hapi": "1.14.x",
     "bower": "1.2.x"
@@ -45,10 +49,10 @@
     "karma-ng-html2js-preprocessor": "~0.1.0"
   },
   "engines": {
-    "node": ">=0.10.15"
+    "node": ">=0.10.24"
   },
   "scripts": {
-    "test": "grunt test",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "test": "grunt test"
+    // "postinstall": "./node_modules/bower/bin/bower install"
   }
 }

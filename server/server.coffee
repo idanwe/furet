@@ -14,5 +14,11 @@ server.route
       listing: false,
       index: true
 
+server.route
+  method: "GET"
+  path: "/users"
+  handler: ->
+    @reply "its work on heroku, fuck bower"
+
 server.start ->
   console.log "server running on port #{server.info.port}"

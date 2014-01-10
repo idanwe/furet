@@ -22,6 +22,14 @@
     }
   });
 
+  server.route({
+    method: "GET",
+    path: "/users",
+    handler: function() {
+      return this.reply("its work on heroku, fuck bower");
+    }
+  });
+
   server.start(function() {
     return console.log("server running on port " + server.info.port);
   });
