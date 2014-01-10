@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/idanw/furet.git"
+    "url": "https://github.com/idanwe/furet.git"
   },
   "dependencies": {
     "hapi": "1.14.x",
