@@ -8,7 +8,7 @@
     port: (_ref = process.env.PORT) != null ? _ref : 8000
   };
 
-  server = new Hapi.Server("0.0.0.0", +defaults.port);
+  server = new Hapi.Server(+defaults.port, "0.0.0.0");
 
   server.route({
     method: "GET",
@@ -31,11 +31,7 @@
   });
 
   server.start(function() {
-    console.log("server.info.uri", server.info.uri);
-    console.log("process.env.HOST", process.env.HOST);
-    server.info.uri = process.env.HOST != null ? "http://" + process.env.HOST + ":process.env.PORT" : server.info.uri;
-    console.log("server running on port " + server.info.port);
-    return console.log("Server started at " + server.info.uri);
+    return console.log("server running on port " + server.info.port);
   });
 
 }).call(this);
