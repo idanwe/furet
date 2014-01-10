@@ -8,7 +8,7 @@
     port: (_ref = process.env.PORT) != null ? _ref : 8000
   };
 
-  server = new Hapi.Server("localhost", parseInt(defaults.port));
+  server = new Hapi.Server("0.0.0.0", +defaults.port);
 
   server.route({
     method: "GET",
