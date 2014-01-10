@@ -3,7 +3,7 @@ Hapi = require "hapi"
 defaults =
   port: process.env.PORT ? 8000
 
-server = new Hapi.Server "localhost", parseInt(defaults.port)
+server = new Hapi.Server "0.0.0.0", +defaults.port
 
 server.route
   method: "GET",
