@@ -31,7 +31,11 @@
   });
 
   server.start(function() {
-    return console.log("server running on port " + server.info.port);
+    console.log("server.info.uri", server.info.uri);
+    console.log("process.env.HOST", process.env.HOST);
+    server.info.uri = process.env.HOST != null ? "http://" + process.env.HOST + ":process.env.PORT" : server.info.uri;
+    console.log("server running on port " + server.info.port);
+    return console.log("Server started at " + server.info.uri);
   });
 
 }).call(this);
