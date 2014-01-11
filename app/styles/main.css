@@ -1,44 +1,16 @@
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding-top: 20px;
+  padding-top: 70px;
   padding-bottom: 20px;
 }
 
-.header{
-  margin-bottom: 30px;
+.jumbotron {
+  position: relative;
 }
 
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
-}
-
-.pick-teams {
+.btn-capitalize {
   letter-spacing: 1px;
   text-transform: capitalize;
-}
-
-.result {
-  position: relative;
-  text-align: center;
-}
-
-.result .right  {
-  position: absolute;
-  top: 0;
-  right: 30px;
-}
-
-.result .left  {
-  position: absolute;
-  top: 0;
-  left: 30px;
 }
 
 .vs {
@@ -50,7 +22,10 @@ body {
 
   font-size: 18px;
   font-weight: 400;
-  color: #7C7C7C;
+}
+
+.team {
+  font-weight: 600;
 }
 
 .blue {
@@ -59,8 +34,4 @@ body {
 
 .red {
   color: red;
-}
-
-.team {
-  font-weight: 600;
 }
