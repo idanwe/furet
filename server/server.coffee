@@ -1,9 +1,9 @@
 Hapi = require "hapi"
 
 defaults =
-  port: process.env.PORT ? 8000
+  port: +process.env.PORT or 8000
 
-server = new Hapi.Server +defaults.port, "0.0.0.0"
+server = new Hapi.Server defaults.port, "0.0.0.0"
 
 server.route
   method: "GET",
@@ -14,11 +14,6 @@ server.route
       listing: false,
       index: true
 
-server.route
-  method: "GET"
-  path: "/users"
-  handler: ->
-    @reply "its work on heroku, fuck bower"
-
 server.start ->
-  console.log "server running on port #{server.info.port}"
+  server.info.uri = if process.env.HOST? then "http://#{process.env.HOST}:#{process.env.PORT}" else server.info.uri
+  console.log "Server started at #{server.info.uri}"
