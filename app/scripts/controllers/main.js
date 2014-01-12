@@ -39,10 +39,8 @@ angular.module('furetApp')
           team1 = random(teams.length),
           team2 = random(teams.length - 1);
 
-      $timeout(function() {
-        $scope.team1 = teams.splice(team1, 1)[0];
-        $scope.team2 = teams.splice(team2, 1)[0];
-        $scope.gamePicked = true;
-      }, 1000);
+      $scope.team1 = teams.splice(team1, 1)[0];
+      $scope.team2 = teams.splice(team2, 1)[0];
+      $scope.gamePicked = true;
     };
   });
