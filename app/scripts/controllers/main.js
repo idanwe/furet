@@ -41,20 +41,20 @@ angular.module('furetApp')
       // 1 Netherlands
       'Ajax',
 
-      // 1 Russia
-      'Zenit',
+      // // 1 Russia
+      // 'Zenit',
 
-      // 1 Ukraine
-      'Shakhtar Donetsk',
+      // // 1 Ukraine
+      // 'Shakhtar Donetsk',
 
-      // 1 Belgium
-      'Standard Liege',
+      // // 1 Belgium
+      // 'Standard Liege',
 
-      // 1 Turkey
-      'Fenerbahce',
+      // // 1 Turkey
+      // 'Fenerbahce',
 
-      // 1 Greece
-      'Olympiakos'
+      // // 1 Greece
+      // 'Olympiakos'
     ];
 
     var random = function(num) {
