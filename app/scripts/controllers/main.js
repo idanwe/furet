@@ -27,11 +27,12 @@ angular.module('furetApp')
       // 2 Italy
       'Juventus',
       'A.S. Rome',
+
       'S.S.C. Napoli',
 
       // 2 Portugal
       'Benefica',
-      'Sporting Lisbon'
+      'Sporting Lisbon',
 
       // 2 France
       'PSG',
