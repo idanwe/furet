@@ -7,8 +7,7 @@
   },
   "dependencies": {
     "async": "^0.8.0",
-    "bower": "1.2.x",
-    "hapi": "1.14.x",
+    "hapi": "^4.1.0",
     "jquery": "^2.1.1",
     "jsdom": "^0.10.5"
   },

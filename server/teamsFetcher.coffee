@@ -29,10 +29,10 @@ leagues = [
     numberOfTeams: 1}
   ]
 
-exports.getTeams = (request) ->
+exports.getTeams = (request, reply) ->
   teams = []
   Async.each leagues, (league, next) ->
-    console.log "fetching #{league.leagueName} from #{league.url}"
+    console.log "fetching #{league.numberOfTeams} teams for #{league.leagueName} from #{league.url}"
     html = ""
     httpRequest = Http.get league.url, (response) ->
       response.on "data", (chunk) ->
@@ -44,9 +44,9 @@ exports.getTeams = (request) ->
          next()
     httpRequest.on 'error', (err) ->
       console.log("Got error: " + err.message)
-      return request.reply(new Hapi.error(err))
+      return reply(new Hapi.error(err))
   , (err) ->
-    return request.reply(new Hapi.error(err)) if err
-    request.reply(teams)
+    return reply(new Hapi.error(err)) if err
+    reply(teams)
 
 
