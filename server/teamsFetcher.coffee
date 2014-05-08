@@ -32,8 +32,9 @@ leagues = [
 
 exports.getTeams = (request, reply) ->
   teams = []
+  console.log "getTeams started #{new Date()}"
   Async.each leagues, (league, next) ->
-    console.log "fetching #{league.numberOfTeams} teams for #{league.leagueName} from #{league.url}"
+    console.log "Fetching #{league.numberOfTeams} teams for #{league.leagueName} from #{league.url}"
     html = ""
     httpRequest = Http.get league.url, (response) ->
       response.on "data", (chunk) ->

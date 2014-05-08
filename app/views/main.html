@@ -7,7 +7,7 @@
 </nav>
 
 <div class="jumbotron center-block">
-  <button class="btn btn-warning btn-lg btn-block btn-capitalize" ng-show="!gamePicked" ng-click="pickTeams()">Begin the battle</button>
+  <button ng-class="{'disabled': loading}" class="btn btn-warning btn-lg btn-block btn-capitalize" ng-show="!gamePicked" ng-click="pickTeams()">Begin the battle</button>
 
   <div class="row text-center" ng-show="gamePicked">
     <div class="col-sm-5">

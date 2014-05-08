@@ -6,10 +6,11 @@ angular.module('furetApp')
     $scope.team1 = '';
     $scope.team2 = '';
 
+    $scope.loading = true
     $http({method: 'GET', url: "/teams"}).
     success(function(data, status, headers, config) {
-      console.log(data)
       $scope.teams = data
+      $scope.loading = false
     })
 
     var random = function(num) {
