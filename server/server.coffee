@@ -6,11 +6,16 @@ defaults =
 
 server = new Hapi.Server defaults.port, "0.0.0.0"
 
+HOUR = 1000 * 60 * 60
+
 server.route([
   {
     method: "GET",
     path: "/teams",
-    handler: TeamsFetcher.getTeams
+    config:
+      handler: TeamsFetcher.getTeams
+      cache:
+        expiresIn: 1 * HOUR
   },
   {
     method: "GET",
@@ -22,8 +27,6 @@ server.route([
         index: true
   }
 ])
-
-
 
 server.start ->
   server.info.uri = if process.env.HOST? then "http://#{process.env.HOST}:#{process.env.PORT}" else server.info.uri
