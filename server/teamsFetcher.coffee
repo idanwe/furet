@@ -2,6 +2,7 @@ Jsdom = require "jsdom"
 $ = require("jquery")(Jsdom.jsdom().createWindow())
 Http = require "http"
 Async = require "async"
+Hapi = require "hapi"
 
 Http.globalAgent.maxSockets = 10;
 
@@ -38,15 +39,16 @@ exports.getTeams = (request, reply) ->
       response.on "data", (chunk) ->
         html += chunk
       response.on "end", ->
+        return reply(new Hapi.error.internal("Error getting webpage from #{league.url}")) if html is ""
         for i in [0...league.numberOfTeams]
           team = $(html).find("tr td.rnk:eq(#{i})").parent().children("td.team").text()
           teams.push team
          next()
     httpRequest.on 'error', (err) ->
       console.log("Got error: " + err.message)
-      return reply(new Hapi.error(err))
+      return reply(new Hapi.error.internal(err))
   , (err) ->
-    return reply(new Hapi.error(err)) if err
+    return reply(new Hapi.error.internal(err)) if err
     reply(teams)
 
 
