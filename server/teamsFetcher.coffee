@@ -50,8 +50,9 @@ exports.getTeams = (done) ->
       console.log("Got error: " + err.message)
       return done(new Hapi.error.internal(err), null)
   , (err) ->
-    console.log "getTeams finished in #{new Date() - startTime}ms"
     return done(new Hapi.error.internal(err), null) if err
+    console.log "getTeams finished in #{new Date() - startTime}ms"
+    console.log "teams selected: #{teams}"
     done(null,teams)
 
 
