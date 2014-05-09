@@ -12,7 +12,7 @@ leagues = [
     numberOfTeams: 3},
     {leagueName: "England",
     url: "http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=england-premier-league-2000000000/standings/index.html",
-    numberOfTeams: 3},
+    numberOfTeams: 4},
     {leagueName: "Germany",
     url: "http://www.fifa.com/world-match-centre/nationalleagues/nationalleague=germany-bundesliga-2000000019/standings/index.html",
     numberOfTeams: 3},
@@ -43,8 +43,13 @@ exports.getTeams = (done) ->
       response.on "end", ->
         return done(new Hapi.error.internal("Error getting webpage from #{league.url}"), null) if html is ""
         for i in [0...league.numberOfTeams]
-          team = $(html).find("tr td.rnk:eq(#{i})").parent().children("td.team").text()
-          teams.push team
+          teamName = $(html).find("tr td.rnk:eq(#{i})").parent().children("td.team").text()
+          teamFullID = $(html).find("tr td.rnk:eq(#{i})").parent().attr('data-filter')
+          teamID = teamFullID.split('_')[1]
+          teams.push
+            teamName: teamName
+            teamID: teamID
+            image_src: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x4.png"
          next()
     httpRequest.on 'error', (err) ->
       console.log("Got error: " + err.message)
@@ -52,7 +57,7 @@ exports.getTeams = (done) ->
   , (err) ->
     return done(new Hapi.error.internal(err), null) if err
     console.log "getTeams finished in #{new Date() - startTime}ms"
-    console.log "teams selected: #{teams}"
+    console.log "teams selected: #{JSON.stringify(teams)}"
     done(null,teams)
 
 

@@ -35,3 +35,9 @@ body {
 .red {
   color: red;
 }
+
+.team-image {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
