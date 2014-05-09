@@ -30,7 +30,8 @@ leagues = [
     numberOfTeams: 1}
   ]
 
-exports.getTeams = (request, reply) ->
+exports.getTeams = (done) ->
+  startTime = new Date()
   teams = []
   console.log "getTeams started #{new Date()}"
   Async.each leagues, (league, next) ->
@@ -40,16 +41,17 @@ exports.getTeams = (request, reply) ->
       response.on "data", (chunk) ->
         html += chunk
       response.on "end", ->
-        return reply(new Hapi.error.internal("Error getting webpage from #{league.url}")) if html is ""
+        return done(new Hapi.error.internal("Error getting webpage from #{league.url}"), null) if html is ""
         for i in [0...league.numberOfTeams]
           team = $(html).find("tr td.rnk:eq(#{i})").parent().children("td.team").text()
           teams.push team
          next()
     httpRequest.on 'error', (err) ->
       console.log("Got error: " + err.message)
-      return reply(new Hapi.error.internal(err))
+      return done(new Hapi.error.internal(err), null)
   , (err) ->
-    return reply(new Hapi.error.internal(err)) if err
-    reply(teams)
+    console.log "getTeams finished in #{new Date() - startTime}ms"
+    return done(new Hapi.error.internal(err), null) if err
+    done(null,teams)
 
 

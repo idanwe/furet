@@ -4,24 +4,27 @@ TeamsFetcher = require("./teamsFetcher")
 defaults =
   port: +process.env.PORT or 8000
 
-server = new Hapi.Server defaults.port, "0.0.0.0",
-  cache: 'catbox-redis'
+server = new Hapi.Server defaults.port, "0.0.0.0"
 
-HOUR = 1000 * 60 * 60
+MINUTE = 60 * 1000
+HOUR = 60 * MINUTE
 
 server.method 'getTeams', TeamsFetcher.getTeams,
-  cache:
+ cache:
     expiresIn: 1 * HOUR
-    shared: true
+    staleIn: 30 * MINUTE
+    staleTimeout: 500
+  generateKey: (endpoint, params)->
+    endpoint + JSON.stringify(params)
 
 server.route([
   {
     method: "GET",
     path: "/teams",
     config:
-      handler: server.methods.getTeams
-      cache:
-        expiresIn: 1 * HOUR
+      handler: (request, reply)->
+        server.methods.getTeams (err, result) ->
+          reply if err then err else result
   },
   {
     method: "GET",
