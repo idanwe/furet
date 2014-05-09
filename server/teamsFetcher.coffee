@@ -43,8 +43,9 @@ exports.getTeams = (done) ->
       response.on "end", ->
         return done(new Hapi.error.internal("Error getting webpage from #{league.url}"), null) if html is ""
         for i in [0...league.numberOfTeams]
-          teamName = $(html).find("tr td.rnk:eq(#{i})").parent().children("td.team").text()
-          teamFullID = $(html).find("tr td.rnk:eq(#{i})").parent().attr('data-filter')
+          teamParentElement = $(html).find("tr td.rnk:eq(#{i})").parent()
+          teamName = teamParentElement.children("td.team").text()
+          teamFullID = teamParentElement.attr('data-filter')
           teamID = teamFullID.split('_')[1]
           teams.push
             teamName: teamName
