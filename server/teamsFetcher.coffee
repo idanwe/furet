@@ -57,7 +57,7 @@ exports.getTeams = (done) ->
               4: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x4.png"
               5: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x5.png"
             league: league.leagueName
-            position: i+1
+            position: i + 1
          next()
     httpRequest.on 'error', (err) ->
       console.log("Got error: " + err.message)
@@ -65,7 +65,7 @@ exports.getTeams = (done) ->
   , (err) ->
     return done(new Hapi.error.internal(err), null) if err
     console.log "getTeams finished in #{new Date() - startTime}ms"
-    console.log "teams selected: #{JSON.stringify(teams.map (team)->team.teamName)}"
+    console.log "teams selected: #{JSON.stringify(teams.map (team) -> team.teamName)}"
     done(null,teams)
 
 
