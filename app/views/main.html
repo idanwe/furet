@@ -7,20 +7,20 @@
 </nav>
 
 <div class="jumbotron center-block">
-  <button ng-class="{'disabled': loading}" class="btn btn-warning btn-lg btn-block btn-capitalize" ng-show="!gamePicked" ng-click="pickTeams()">Begin the battle</button>
+  <button ng-disabled="loading" class="btn btn-warning btn-lg btn-block btn-capitalize" ng-show="!gamePicked" ng-click="pickTeams()">Begin the battle</button>
 
   <div class="row text-center" ng-show="gamePicked">
     <div class="col-sm-5">
       <div class="player-name red">Red Player:</div>
       <span class="team">{{team1.teamName}}</span>
-      <img class="team-image red" src={{team1.image_src.4}}>
+      <img class="team-image red" ng-src={{team1.image_src.4}}>
       <span class="league-info red">(#{{team1.position}} in {{team1.league}})</span>
     </div>
     <span class="vs col-sm-2">vs</span>
     <div class="col-sm-5">
       <div class="player-name blue">Blue Player:</div>
       <div class="team">{{team2.teamName}}</div>
-      <img class="team-image blue" src={{team2.image_src.4}}>
+      <img class="team-image blue" ng-src={{team2.image_src.4}}>
       <span class="league-info blue">(#{{team2.position}} in {{team2.league}})</span>
     </div>
     <button class="btn btn-warning btn-sm" ng-show="gamePicked" ng-click="pickTeams()"><span class="glyphicon glyphicon-repeat"></span></button>
