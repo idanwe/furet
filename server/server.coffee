@@ -14,7 +14,7 @@ HOUR = 60 * MINUTE
 # (err, result) ->
 # and not on the handler itself of type:
 # (request, reply) ->
-server.method 'getTeams', TeamsFetcher.getTeams,
+server.method 'getUefaClubs', TeamsFetcher.getUefaClubs,
  cache:
     # the cahce cleans after one hour
     expiresIn: 1 * HOUR
@@ -27,10 +27,18 @@ server.method 'getTeams', TeamsFetcher.getTeams,
 server.route([
   {
     method: "GET",
-    path: "/teams",
+    path: "/clubs",
     config:
       handler: (request, reply) ->
-        server.methods.getTeams (err, result) ->
+        server.methods.getUefaClubs (err, result) ->
+          reply if err then err else result
+  },
+  {
+    method: "GET",
+    path: "/countries",
+    config:
+      handler: (request, reply) ->
+        TeamsFetcher.getWorldCupTeams (err, result) ->
           reply if err then err else result
   },
   {

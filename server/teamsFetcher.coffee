@@ -30,10 +30,10 @@ leagues = [
     numberOfTeams: 1}
   ]
 
-exports.getTeams = (done) ->
+exports.getUefaClubs = (done) ->
   startTime = new Date()
   teams = []
-  console.log "getTeams started #{new Date()}"
+  console.log "getUefaClubs started #{new Date()}"
   Async.each leagues, (league, next) ->
     console.log "Fetching #{league.numberOfTeams} teams for #{league.leagueName} from #{league.url}"
     html = ""
@@ -64,8 +64,204 @@ exports.getTeams = (done) ->
       return done(new Hapi.error.internal(err), null)
   , (err) ->
     return done(new Hapi.error.internal(err), null) if err
-    console.log "getTeams finished in #{new Date() - startTime}ms"
-    console.log "teams selected: #{JSON.stringify(teams.map (team) -> team.teamName)}"
-    done(null,teams)
+    console.log "getUefaClubs finished in #{new Date() - startTime}ms"
+    console.log "clubs selected: #{JSON.stringify(teams.map (team) -> team.teamName)}"
+    done(null, teams)
 
+countris = [
+  {countryName: "Brazil",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/bra.png"
+    organiztion: "http://img.fifa.com/images/logos/s/bra.gif"
+  group: "A"
+  },
+  {countryName: "Croatia",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/cro.png"
+    organiztion: "http://img.fifa.com/images/logos/s/cro.gif"
+  group: "A"
+  },
+  {countryName: "Mexico",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/mex.png"
+    organiztion: "http://img.fifa.com/images/logos/s/mex.gif"
+  group: "A"
+  },
+  {countryName: "Cameroon",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/cmr.png"
+    organiztion: "http://img.fifa.com/images/logos/s/cmr.gif"
+  group: "A"
+  },
+  {countryName: "Spain",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/esp.png"
+    organiztion: "http://img.fifa.com/images/logos/s/esp.gif"
+  group: "B"
+  },
+  {countryName: "Netherlands",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/ned.png"
+    organiztion: "http://img.fifa.com/images/logos/s/ned.gif"
+  group: "B"
+  },
+  {countryName: "Australia",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/aus.png"
+    organiztion: "http://img.fifa.com/images/logos/s/aus.gif"
+  group: "B"
+  },
+  {countryName: "Chile",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/chi.png"
+    organiztion: "http://img.fifa.com/images/logos/s/chi.gif"
+  group: "B"
+  },
+  {countryName: "Colombia",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/col.png"
+    organiztion: "http://img.fifa.com/images/logos/s/col.gif"
+  group: "C"
+  },
+  {countryName: "Greece",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/gre.png"
+    organiztion: "http://img.fifa.com/images/logos/s/gre.gif"
+  group: "C"
+  },
+  {countryName: "Côte d'Ivoire",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/civ.png"
+    organiztion: "http://img.fifa.com/images/logos/s/civ.gif"
+  group: "C"
+  },
+  {countryName: "Japan",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/jpn.png"
+    organiztion: "http://img.fifa.com/images/logos/s/jpn.gif"
+  group: "C"
+  },
+  {countryName: "Uruguay",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/uru.png"
+    organiztion: "http://img.fifa.com/images/logos/s/uru.gif"
+  group: "D"
+  },
+  {countryName: "Costa Rica",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/crc.png"
+    organiztion: "http://img.fifa.com/images/logos/s/crc.gif"
+  group: "D"
+  },
+  {countryName: "England",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/eng.png"
+    organiztion: "http://img.fifa.com/images/logos/s/eng.gif"
+  group: "D"
+  },
+  {countryName: "Italy",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/ita.png"
+    organiztion: "http://img.fifa.com/images/logos/s/ita.gif"
+  group: "D"
+  },
+  {countryName: "Switzerland",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/sui.png"
+    organiztion: "http://img.fifa.com/images/logos/s/sui.gif"
+  group: "E"
+  },
+  {countryName: "Ecuador",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/ecu.png"
+    organiztion: "http://img.fifa.com/images/logos/s/ecu.gif"
+  group: "E"
+  },
+  {countryName: "France",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/fra.png"
+    organiztion: "http://img.fifa.com/images/logos/s/fra.gif"
+  group: "E"
+  },
+  {countryName: "Honduras",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/hon.png"
+    organiztion: "http://img.fifa.com/images/logos/s/hon.gif"
+  group: "E"
+  },
+  {countryName: "Argentina",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/arg.png"
+    organiztion: "http://img.fifa.com/images/logos/s/arg.gif"
+  group: "F"
+  },
+  {countryName: "Bosnia and Herzegovina",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/bih.png"
+    organiztion: "http://img.fifa.com/images/logos/s/bih.gif"
+  group: "F"
+  },
+  {countryName: "Iran",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/irn.png"
+    organiztion: "http://img.fifa.com/images/logos/s/irn.gif"
+  group: "F"
+  },
+  {countryName: "Nigeria",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/nga.png"
+    organiztion: "http://img.fifa.com/images/logos/s/nga.gif"
+  group: "F"
+  },
+  {countryName: "Germany",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/ger.png"
+    organiztion: "http://img.fifa.com/images/logos/s/ger.gif"
+  group: "G"
+  },
+  {countryName: "Portugal",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/por.png"
+    organiztion: "http://img.fifa.com/images/logos/s/por.gif"
+  group: "G"
+  },
+  {countryName: "Ghana",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/gha.png"
+    organiztion: "http://img.fifa.com/images/logos/s/gha.gif"
+  group: "G"
+  },
+  {countryName: "USA",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/usa.png"
+    organiztion: "http://img.fifa.com/images/logos/s/usa.gif"
+  group: "G"
+  },
+  {countryName: "Belgium",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/bel.png"
+    organiztion: "http://img.fifa.com/images/logos/s/bel.gif"
+  group: "H"
+  },
+  {countryName: "Algeria",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/alg.png"
+    organiztion: "http://img.fifa.com/images/logos/s/alg.gif"
+  group: "H"
+  },
+  {countryName: "Russia",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/rus.png"
+    organiztion: "http://img.fifa.com/images/logos/s/rus.gif"
+  group: "H"
+  },
+  {countryName: "Korea Republic",
+  image_src:
+    flag: "http://img.fifa.com/images/flags/4/kor.png"
+    organiztion: "http://img.fifa.com/images/logos/s/kor.gif"
+  group: "H"
+  }
+]
 
+exports.getWorldCupTeams = (done) ->
+  done(null, countris)
