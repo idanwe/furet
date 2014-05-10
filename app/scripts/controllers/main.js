@@ -7,7 +7,7 @@ angular.module('furetApp')
     $scope.team2 = '';
 
     $scope.loading = true
-    $http({method: 'GET', url: "/teams"}).
+    $http({method: 'GET', url: "/clubs"}).
     success(function(data, status, headers, config) {
       $scope.teams = data
       $scope.loading = false
