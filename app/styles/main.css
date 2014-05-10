@@ -41,3 +41,7 @@ body {
   margin-right: auto;
   display: block;
 }
+
+.league-info {
+  font-size: 14px;
+}

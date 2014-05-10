@@ -51,6 +51,8 @@ exports.getTeams = (done) ->
             teamName: teamName
             teamID: teamID
             image_src: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x4.png"
+            league: league.leagueName
+            position: i+1
          next()
     httpRequest.on 'error', (err) ->
       console.log("Got error: " + err.message)
