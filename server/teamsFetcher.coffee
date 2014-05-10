@@ -50,7 +50,12 @@ exports.getTeams = (done) ->
           teams.push
             teamName: teamName
             teamID: teamID
-            image_src: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x4.png"
+            image_src:
+              1: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x1.png"
+              2: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x2.png"
+              3: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x3.png"
+              4: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x4.png"
+              5: "http://www.fifa.com/mm/teams/#{teamID}/#{teamID}x5.png"
             league: league.leagueName
             position: i+1
          next()
@@ -60,7 +65,7 @@ exports.getTeams = (done) ->
   , (err) ->
     return done(new Hapi.error.internal(err), null) if err
     console.log "getTeams finished in #{new Date() - startTime}ms"
-    console.log "teams selected: #{JSON.stringify(teams)}"
+    console.log "teams selected: #{JSON.stringify(teams.map (team)->team.teamName)}"
     done(null,teams)
 
 
